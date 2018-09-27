@@ -17,7 +17,9 @@ A course export from the edx platform consists of an archive with many xml and x
 
 2. process the course export files (in the **some-folder-name** folder), generating a flat xml and redirecting to file.
 
-   ```edx-course-export-flatten.sh some-folder-name > some-course-name.xml```
+   ```
+   edx-course-export-flatten.sh some-folder-name > some-course-name.xml
+   ```
 
 ## Requirements
 Detiled install-instructions will follow later
