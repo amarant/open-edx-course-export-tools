@@ -1,4 +1,8 @@
 # Open edX course export tools
+Flatten a open-edx course export to one xml file and do more interesting things with the xml-content such as:
+ - e-pub conversion (to be done)
+ - restructuring (to be done)
+ - accessibity audit (to be done)
 
 ## edx-course-export-flatten
 A course export from the edx platform consists of an archive with many xml and xml-like files scattered over several folders.
