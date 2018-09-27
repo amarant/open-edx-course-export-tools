@@ -10,8 +10,10 @@ A course export from the edx platform consists of an archive with many xml and x
 ### To flatten the course export into a single xml file
 1. First, we need to unpack the edx course export archive and give it a sensible name. Here I am assuming that you already have the the archive in the current folder. In this case the extracted archive contained the folder called 'course'.
 
-   ```tar -xvzf archive-name.tar.gz
-   mv course some-folder-name```
+   ```
+   tar -xvzf archive-name.tar.gz
+   mv course some-folder-name
+   ```
 
 2. process the course export files (in the **some-folder-name** folder), generating a flat xml and redirecting to file.
 
