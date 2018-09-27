@@ -16,4 +16,4 @@
 #
 # given a folder as a parameter, the xsl-stylesheet will look for the "course.xml" file in the folder and will try to open that file to begin processing, so this file doesn't need to be specified
 pwd=$(pwd)
-saxon -it:main f=$pwd/$1 -xsl:'/home/hanson/bin/workflowtools/edx-course-export-tools/edx-course-export-flatten.xsl'
+saxon -it:main f=$pwd/$1 -xsl:'/usr/local/bin/open-edx-course-tools/edx-course-export-flatten.xsl'
