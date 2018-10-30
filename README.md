@@ -47,7 +47,7 @@ sudo ln -s open-edx-course-export-tools/edx-course-export-flatten.sh
 ```
 
 ## Installing requirements
-You need the ability to run a xslt processor capable of running xslt version 3 stylesheets, I recommend the saxon processor for this, but possibly you could use another processor. The saxon product have several version. For the stylesheets in this package, the free HE (Home Edition) version of the Saxon processor will be sufficient.
+You need the ability to run a xslt processor capable of running xslt version 3 stylesheets, I recommend the saxon processor for this, but possibly you could use another processor. The saxon product has several versions. For the stylesheets in this package, the free HE (Home Edition) version of the Saxon processor will be sufficient.
 
 - **saxon xslt/xquery processor** - needed to perform the xslt transformations
 - **java runtime environment** - needed to run the saxon processor
