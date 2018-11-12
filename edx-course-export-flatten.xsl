@@ -2455,7 +2455,7 @@
                 <xsl:matching-substring><xsl:value-of select="concat(regex-group(1),'/>')"/></xsl:matching-substring>
                 <xsl:non-matching-substring>
                     <!--  remove    <o:p></o:p>                -->
-                    <xsl:analyze-string select="." regex="(&lt;o:p>.*?&lt;/o:p>)">
+                    <xsl:analyze-string select="." regex="(&lt;o:p.*?>.*?&lt;/o:p>)">
                         <xsl:matching-substring><xsl:message ><xsl:text>Removed: </xsl:text><xsl:value-of select="replace(.,'&gt;','>')"/><xsl:text></xsl:text></xsl:message></xsl:matching-substring>
                         <xsl:non-matching-substring><xsl:value-of select="."/></xsl:non-matching-substring>
                     </xsl:analyze-string>
