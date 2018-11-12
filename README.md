@@ -6,7 +6,7 @@ Flatten a open-edx course export to one xml file and do more interesting things 
 
 ## edx-course-export-flatten
 A course export from the edx platform consists of an archive with many xml and xml-like files scattered over several folders.
-- edx-course-export-flatten.sh
+- edx-course-export-flatten
   - script to run the xsl transformation using the xsl stylesheet on the course export folder
 - edx-course-export-flatten.xsl
   - the xsl stylesheet with the transformation rules combining all the xml-files into one xml document
@@ -22,7 +22,7 @@ A course export from the edx platform consists of an archive with many xml and x
 2. process the course export files (in the **some-folder-name** folder), generating a flat xml and redirecting to file.
 
    ```
-   edx-course-export-flatten.sh some-folder-name > some-course-name.xml
+   edx-course-export-flatten some-folder-name > some-course-name.xml
    ```
 
 ## Requirements
@@ -31,11 +31,11 @@ You need:
 - a terminal client to run commands
 - java runtime environment (required by saxon)
 - the saxon xsl processor (supporing xsl version 3) needs to be in the PATH accessible from the command "saxon". Instructions on installing the saxon processor is found further down on the page.
-- a symlink pointing to edx-course-flatten.sh needs to be in a folder that is in the PATH
-- the references to the edx-course-export-flatten.xsl stylesheet in edx-course-export-flatten.sh needs to be updated to match the full path on your system
+- a symlink pointing to edx-course-flatten needs to be in a folder that is in the PATH
+- the references to the edx-course-export-flatten.xsl stylesheet in edx-course-export-flatten needs to be updated to match the full path on your system
 
 ## Installing open edX course export tools
-Note 1: All instructions here assume that you have root access to your system and will install to /usr/local/bin. If you wish to install in a different location, for instance /home/username/bin, you will have to modify these instructions accordingly, as well as updating edx-course-export-flatten.sh with the corrected absolute/rooted path of the xsl stylesheet.
+Note 1: All instructions here assume that you have root access to your system and will install to /usr/local/bin. If you wish to install in a different location, for instance /home/username/bin, you will have to modify these instructions accordingly, as well as updating edx-course-export-flatten with the corrected absolute/rooted path of the xsl stylesheet.
 Also the folder /home/username/bin needs to be set up in the system's search path so you can run commands from that folder. If in doubt, see this article on [how to add a directory to system path on linux]( https://www.computerhope.com/issues/ch001647.htm)
 
 Note 2: these instructions will assume a debian type linux os. Users with other linux/unix flavours can adapt accordingly.
@@ -43,7 +43,7 @@ Note 2: these instructions will assume a debian type linux os. Users with other 
 ```
 cd /usr/local/bin
 sudo git clone https://github.com/eirikhanssen/open-edx-course-export-tools.git
-sudo ln -s open-edx-course-export-tools/edx-course-export-flatten.sh
+sudo ln -s open-edx-course-export-tools/edx-course-export-flatten
 ```
 
 ## Installing requirements
