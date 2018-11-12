@@ -16,4 +16,60 @@
 #
 # given a folder as a parameter, the xsl-stylesheet will look for the "course.xml" file in the folder and will try to open that file to begin processing, so this file doesn't need to be specified
 pwd=$(pwd)
-saxon -it:main f=$pwd/$1 -xsl:'/usr/local/bin/open-edx-course-export-tools/edx-course-export-flatten.xsl'
+file="course.xml"
+
+appname () {
+  echo "edX course export flatten (2018-11-12) from OsloMet - Oslo Metropolitan University"
+  echo ""
+}
+
+usage () {
+  echo ""
+  echo "Merge content of an edx course export into a single flattened xml"
+  echo "If the content is in a tar.gz archive, first the contents need folder needs to be extracted: tar -xvzf archive.tar.gz"
+  echo "\"course.xml\" is the starter xml file in the course export that begins referencing other xml files"
+  echo ""
+  echo "This script will outut on standard output. Use file redirection to redirect to file: \"command > file\" to replace or \"command >> file\" to append." 
+  echo ""
+  echo "Usage: "
+  echo "if \"course.xml\" is in the current directory, the DIRECTORY parameter is not required, otherwise, specify a folder to look in"
+  echo ""
+  echo "Examples without and with redirect of standard output: "
+  echo "edx-course-export-flatten"
+  echo "edx-course-export-flatten DIRECTORY"
+  echo "edx-course-export-flatten > result.xml"
+  echo "edx-course-export-flatten DIRECTORY > result.xml"
+}
+
+if [ "$#" -eq 0 ]; then
+  folderpath="$pwd"
+  filepath="$folderpath/$file"
+  if [ -f "$file" ]
+  then
+    saxon -it:main f=$folderpath -xsl:'/usr/local/bin/open-edx-course-export-tools/edx-course-export-flatten.xsl'
+  else
+    appname
+    echo "NOTICE: Could not find \"$file\" in \"$folderpath\" (the current directory)"
+    usage
+    exit 1
+  fi
+fi
+
+if [ "$#" -eq 1 ]
+then
+  folderpath="$pwd/$1"
+  filepath="$folderpath/$file"
+  if [ -d "$1" ]
+  then
+    if [ -f "$filepath" ]
+    then
+#      echo "found $file in $1" >&2
+      saxon -it:main f=$folderpath -xsl:'/usr/local/bin/open-edx-course-export-tools/edx-course-export-flatten.xsl'
+    else
+      appname
+      echo "NOTICE: Could not find \"$file\" in \"$folderpath\"" >&2
+      usage
+    fi
+    exit 1
+  fi
+fi
