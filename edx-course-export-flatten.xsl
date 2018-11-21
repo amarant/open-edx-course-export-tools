@@ -56,6 +56,7 @@
     <xsl:variable name="f_vertical" select="concat($f_root, '/vertical/')"/>
     <xsl:variable name="f_html" select="concat($f_root, '/html/')"/>
     <xsl:variable name="f_video" select="concat($f_root, '/video/')"/>
+    <xsl:variable name="f_problem" select="concat($f_root, '/problem/')"/>
 
 <xsl:variable name="html_doctype_entities_local">
 <!--  Define some entities that are used in html files. This might need to be expanded later -->
@@ -2443,6 +2444,14 @@
         </video>
     </xsl:template>
     
+    <xsl:template match="problem" mode="phase-5">
+        <xsl:variable name="problem-doc" select="doc(concat($f_problem,@url_name,'.xml'))"/>
+        <problem>
+            <xsl:apply-templates select="@*"/>
+            <xsl:sequence select="$problem-doc/*/(@*|node())"/>
+        </problem>
+    </xsl:template>
+    
     <!-- phase-5 -->
     
     <xsl:template match="html" mode="phase-6">
@@ -2462,13 +2471,9 @@
                 </xsl:non-matching-substring>
             </xsl:analyze-string>
         </xsl:variable>
-<!--        <xsl:variable name="rooted-html-doc-string" select="concat($html_doctype_entities_w3c,'&lt;html>',$html-doc,'&lt;/html>')"/>-->
+
         <xsl:variable name="rooted-html-doc-xml" select="parse-xml($rooted-html-doc-string-self-closed-images)"/>
-<!--        <html>-->
-<!--            <xsl:apply-templates select="@*"/>-->
             <xsl:sequence select="$rooted-html-doc-xml/*/(@*|node())"/>
-        <!--</html>-->
-        
     </xsl:template>
 
     <xsl:template name="main">
